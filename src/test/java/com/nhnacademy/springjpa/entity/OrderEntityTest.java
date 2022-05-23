@@ -33,6 +33,7 @@ public class OrderEntityTest {
     public void testOrderEntity() {
         Order order1 = entityManager.find(Order.class, 1001L);
 
+        //ReflectionTestUtils.invokeGetterMethod == order.getOrderId() 같다.
         assertThat(ReflectionTestUtils.invokeGetterMethod(order1, "orderId")).isEqualTo(1001L);
         assertThat(ReflectionTestUtils.invokeGetterMethod(order1, "orderDate")).isNotNull();
     }
