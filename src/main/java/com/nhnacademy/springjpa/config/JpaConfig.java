@@ -21,6 +21,7 @@ public class JpaConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
         LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
         emf.setDataSource(dataSource);
+        // 엔티티 찾는 경로 스캔
         emf.setPackagesToScan("com.nhnacademy.springjpa.entity");
         emf.setJpaVendorAdapter(jpaVendorAdapters());
         emf.setJpaProperties(jpaProperties());
