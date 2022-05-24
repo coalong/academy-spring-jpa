@@ -32,10 +32,13 @@ public class EntityManagerTest {
         user1.setId("newUser");
         user1.setPassword("abcde");
 
+        // 1차 캐시에만 들어가 있다.
         entityManager.persist(user1);
 
         User user2 = entityManager.find(User.class, "newUser");
         assertThat(user2).isEqualTo(user1);
+
+        // flush 실행 안되서 Rollback (@Transactional)
     }
 
     // TODO #4: 다음 테스트를 실행하면 수행될 쿼리는?
@@ -46,7 +49,7 @@ public class EntityManagerTest {
         user1.setPassword("abcde");
 
         entityManager.persist(user1);
-        entityManager.flush();          // <--
+        entityManager.flush();          // <-- DB에 실행된다.
 
         User user2 = entityManager.find(User.class, "newUser");
         assertThat(user2).isEqualTo(user1);
