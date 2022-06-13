@@ -31,7 +31,6 @@ public class UserRestController {
         if (Objects.isNull(user)) {
             throw new UserNotFoundException();
         }
-
         return user;
     }
 
@@ -44,6 +43,7 @@ public class UserRestController {
     public User modifyUser(@ModelAttribute("user") User user,
                            @Valid @RequestBody UserModifyRequest request,
                            BindingResult bindingResult) {
+        // bindingResult 는 @Valid 로 검증한 결과, 예외처리
         if (bindingResult.hasErrors()) {
             throw new ValidationFailedException(bindingResult);
         }

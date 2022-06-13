@@ -10,6 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableWebMvc
 @EnableSpringDataWebSupport
 @Configuration
+@EnableSpringDataWebSupport
 @ComponentScan(basePackageClasses = ControllerBase.class)
 public class WebConfig implements WebMvcConfigurer {
 }
